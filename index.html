@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>/anon/ - Fórum Anônimo</title>
+    <title>FreeZone - Fórum Anônimo</title>
     <style>
         * {
             margin: 0;
@@ -19,6 +19,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            -webkit-text-size-adjust: 100%; /* Evita zoom automático no iOS */
+            -ms-text-size-adjust: 100%;
         }
 
         .header {
@@ -53,6 +55,9 @@
             font-size: 1.5rem;
             border-radius: 10px;
             text-align: center;
+            -webkit-appearance: none; /* Remove estilo padrão do iOS */
+            -moz-appearance: none;
+            appearance: none;
         }
 
         .search-giant:focus {
@@ -231,6 +236,111 @@
             .container {
                 padding: 1rem;
             }
+            
+            .main-search {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .search-giant {
+                font-size: 1.2rem;
+                padding: 1rem;
+                text-align: left;
+            }
+            
+            .add-btn {
+                width: 100%;
+                height: 50px;
+                border-radius: 25px;
+                font-size: 1.5rem;
+            }
+            
+            .create-post {
+                padding: 0.75rem;
+            }
+            
+            .create-post input, .create-post textarea {
+                font-size: 16px; /* Evita zoom no iOS */
+            }
+            
+            .post {
+                padding: 0.75rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .post-actions {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            
+            .post-actions button {
+                flex: 1;
+                min-width: 60px;
+                text-align: center;
+            }
+            
+            .add-comment {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .media-toggle {
+                width: 100%;
+                padding: 0.75rem;
+                font-size: 0.9rem;
+            }
+            
+            .warning-modal {
+                margin: 1rem;
+                max-width: none;
+                padding: 1.5rem;
+            }
+            
+            .warning-buttons {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            
+            .warning-btn {
+                width: 100%;
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                align-items: flex-start;
+                padding-top: 1rem;
+            }
+            
+            .container {
+                padding: 0.75rem;
+                max-width: 100%;
+            }
+            
+            .search-giant {
+                font-size: 1rem;
+                padding: 0.75rem;
+            }
+            
+            .post-title {
+                font-size: 1rem;
+                line-height: 1.3;
+            }
+            
+            .post-content {
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+            
+            .post-meta {
+                font-size: 0.8rem;
+            }
+            
+            .post-actions button {
+                font-size: 0.75rem;
+                padding: 0.2rem 0.4rem;
+            }
         }
 
         /* Warning Modal */
@@ -368,13 +478,13 @@
     <!-- Warning Modal -->
     <div class="warning-overlay" id="warningModal">
         <div class="warning-modal">
-            <div class="warning-title">⚠️ Aviso de Conteúdo</div>
+            <div class="warning-title">⚠️ FreeZone - Aviso</div>
             <div class="warning-text">
-                Este fórum pode conter conteúdo nocivo, adulto ou inadequado. 
+                Este é o FreeZone - um fórum anônimo que pode conter conteúdo nocivo, adulto ou inadequado. 
                 <br><br>
                 Ao continuar, você confirma que tem 18+ anos e aceita visualizar tal conteúdo por sua própria responsabilidade.
                 <br><br>
-                Deseja continuar?
+                Bem-vindo à zona livre. Deseja continuar?
             </div>
             <div class="warning-buttons">
                 <button class="warning-btn" onclick="acceptWarning()">Aceitar e Continuar</button>
@@ -386,7 +496,7 @@
     <div class="container">
         <!-- Busca Principal -->
         <div class="main-search">
-            <input type="text" class="search-giant" id="searchInput" placeholder="Buscar no fórum anônimo..." onkeyup="searchPosts()">
+            <input type="text" class="search-giant" id="searchInput" placeholder="Buscar no FreeZone..." onkeyup="searchPosts()">
             <button class="add-btn" id="addBtn" onclick="toggleCreatePost()" title="Criar Post">+</button>
         </div>
 
