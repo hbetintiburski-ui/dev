@@ -380,6 +380,18 @@
             margin-bottom: 2rem;
         }
 
+        .terms-link {
+            color: #00ff00;
+            text-decoration: underline;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .terms-link:hover {
+            color: #fff;
+        }
+
         .warning-buttons {
             display: flex;
             gap: 1rem;
@@ -473,6 +485,138 @@
             border: 0;
         }
 
+        /* Terms Modal */
+        .terms-modal {
+            background: #111;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            padding: 2rem;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            text-align: left;
+        }
+
+        .terms-title {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .terms-content {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .terms-content h3 {
+            color: #fff;
+            margin: 1.5rem 0 1rem 0;
+            font-size: 1.1rem;
+        }
+
+        .terms-content p {
+            margin-bottom: 1rem;
+        }
+
+        .terms-content ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .terms-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .report-btn {
+            background: #ff4444;
+            color: #fff;
+            border: 1px solid #ff4444;
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.8rem;
+            border-radius: 3px;
+            margin-left: 0.5rem;
+        }
+
+        .report-btn:hover {
+            background: #ff6666;
+        }
+
+        /* Report Modal */
+        .report-modal {
+            background: #111;
+            border: 2px solid #ff4444;
+            border-radius: 10px;
+            padding: 2rem;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .report-title {
+            font-size: 1.3rem;
+            color: #ff4444;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .report-text {
+            color: #ccc;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .report-textarea {
+            width: 100%;
+            background: #000;
+            border: 1px solid #ff4444;
+            color: #fff;
+            padding: 0.75rem;
+            font-family: inherit;
+            border-radius: 5px;
+            height: 120px;
+            resize: vertical;
+            margin-bottom: 1.5rem;
+        }
+
+        .report-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .report-submit {
+            background: #ff4444;
+            color: #fff;
+            border: 1px solid #ff4444;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            font-family: inherit;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .report-submit:hover {
+            background: #ff6666;
+        }
+
+        .report-cancel {
+            background: #000;
+            color: #fff;
+            border: 1px solid #fff;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            font-family: inherit;
+            border-radius: 5px;
+        }
+
+        .report-cancel:hover {
+            background: #333;
+        }
+
     </style>
 </head>
 <body>
@@ -487,9 +631,74 @@
                 <br><br>
                 Bem-vindo à zona livre. Deseja continuar?
             </div>
+            <div class="terms-link" onclick="showTerms()">📋 Ler Termos de Uso e Privacidade</div>
             <div class="warning-buttons">
                 <button class="warning-btn" onclick="acceptWarning()">Aceitar e Continuar</button>
                 <button class="warning-btn decline" onclick="declineWarning()">Sair</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <div class="warning-overlay" id="termsModal" style="display: none;">
+        <div class="terms-modal">
+            <div class="terms-title">📋 Termos de Uso e Privacidade - FreeZone</div>
+            <div class="terms-content">
+                <h3>1. Sobre o FreeZone</h3>
+                <p>O FreeZone é um fórum anônimo que permite discussões livres. Ao usar nossa plataforma, você concorda com estes termos.</p>
+
+                <h3>2. Coleta e Uso de Dados</h3>
+                <p><strong>IPs são coletados e armazenados</strong> para fins de segurança e cumprimento legal:</p>
+                <ul>
+                    <li>🔒 <strong>Segurança:</strong> Prevenção de spam e ataques</li>
+                    <li>⚖️ <strong>Legal:</strong> Cooperação com autoridades em casos de crimes</li>
+                    <li>👮 <strong>Crimes Graves:</strong> Pedofilia, terrorismo, ameaças, etc.</li>
+                    <li>🚫 <strong>Privacidade:</strong> IPs NÃO são exibidos publicamente</li>
+                </ul>
+
+                <h3>3. Conteúdo Proibido</h3>
+                <p>São estritamente proibidos:</p>
+                <ul>
+                    <li>📷 Pornografia infantil ou exploração de menores</li>
+                    <li>💣 Terrorismo, violência extrema ou ameaças</li>
+                    <li>💊 Venda de drogas ou armas</li>
+                    <li>🎯 Doxxing ou exposição de dados pessoais</li>
+                    <li>⚖️ Qualquer conteúdo ilegal no Brasil</li>
+                </ul>
+
+                <h3>4. Denúncias</h3>
+                <p>Use o botão "🚨 Denunciar" para reportar conteúdo inadequado. Todas as denúncias são investigadas.</p>
+
+                <h3>5. Cooperação Legal</h3>
+                <p><strong>IMPORTANTE:</strong> Em casos de investigação criminal (especialmente crimes contra menores), forneceremos TODOS os dados coletados (incluindo IPs) às autoridades competentes para identificação e prisão dos responsáveis.</p>
+
+                <h3>6. Anonimato Relativo</h3>
+                <p>O anonimato é garantido entre usuários, mas NÃO perante a lei. Crimes têm consequências reais.</p>
+
+                <h3>7. Uso Responsável</h3>
+                <p>Você é responsável por seu conteúdo. Use o FreeZone com responsabilidade e respeite as leis brasileiras.</p>
+            </div>
+            <div class="warning-buttons">
+                <button class="warning-btn" onclick="closeTerms()">Entendi e Aceito</button>
+                <button class="warning-btn decline" onclick="declineWarning()">Não Aceito - Sair</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Modal -->
+    <div class="warning-overlay" id="reportModal" style="display: none;">
+        <div class="report-modal">
+            <div class="report-title">🚨 Denunciar Conteúdo</div>
+            <div class="report-text">
+                <strong>Descreva o motivo da denúncia:</strong><br>
+                (Pedofilia, terrorismo, ameaças, doxxing, etc.)
+            </div>
+            <textarea id="reportReason" class="report-textarea" placeholder="Explique detalhadamente o motivo da denúncia..."></textarea>
+            <input type="hidden" id="reportPostId" value="">
+            <input type="hidden" id="reportCommentId" value="">
+            <div class="report-buttons">
+                <button class="report-submit" onclick="submitReport()">🚨 Enviar Denúncia</button>
+                <button class="report-cancel" onclick="closeReport()">Cancelar</button>
             </div>
         </div>
     </div>
@@ -603,6 +812,16 @@
                     mediaType: getMediaType(mediaUrl)
                 };
             }
+
+            // Capturar IP do usuário
+            let userIP = 'unknown';
+            try {
+                const ipResponse = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipResponse.json();
+                userIP = ipData.ip;
+            } catch (error) {
+                console.log('Não foi possível capturar IP:', error);
+            }
             
             const post = {
                 id: generateId(),
@@ -613,7 +832,8 @@
                 timestamp: Date.now(),
                 upvotes: 0,
                 downvotes: 0,
-                comments: 0
+                comments: 0,
+                ip: userIP
             };
 
             try {
@@ -667,6 +887,7 @@
                             <button onclick="vote('${post.id}', 'up')">▲ ${post.upvotes || 0}</button>
                             <button onclick="vote('${post.id}', 'down')">▼ ${post.downvotes || 0}</button>
                             <button onclick="toggleComments('${post.id}')">💬 ${post.comments || 0}</button>
+                            <button class="report-btn" onclick="reportPost('${post.id}')">🚨 Denunciar</button>
                         </div>
                     </div>
                     <div class="comments" id="comments-${post.id}">
@@ -744,7 +965,10 @@
                 container.innerHTML = comments.map(comment => `
                     <div class="comment">
                         <div class="comment-content">${comment.content}</div>
-                        <div style="color: #555; font-size: 0.8rem;">${formatTime(comment.timestamp)}</div>
+                        <div style="color: #555; font-size: 0.8rem;">
+                            ${formatTime(comment.timestamp)}
+                            <button class="report-btn" onclick="reportComment('${postId}', '${comment.id}')" style="font-size: 0.7rem; padding: 0.1rem 0.3rem; margin-left: 0.5rem;">🚨</button>
+                        </div>
                     </div>
                 `).join('');
             } catch (error) {
@@ -758,10 +982,21 @@
 
             if (!content) return;
 
+            // Capturar IP do usuário
+            let userIP = 'unknown';
+            try {
+                const ipResponse = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipResponse.json();
+                userIP = ipData.ip;
+            } catch (error) {
+                console.log('Não foi possível capturar IP:', error);
+            }
+
             const comment = {
                 id: generateId(),
                 content: content,
-                timestamp: Date.now()
+                timestamp: Date.now(),
+                ip: userIP
             };
 
             try {
@@ -966,6 +1201,74 @@
 
         function declineWarning() {
             window.location.href = 'https://google.com';
+        }
+
+        function showTerms() {
+            document.getElementById('warningModal').style.display = 'none';
+            document.getElementById('termsModal').style.display = 'flex';
+        }
+
+        function closeTerms() {
+            document.getElementById('termsModal').style.display = 'none';
+            document.getElementById('warningModal').style.display = 'flex';
+        }
+
+        // Report Functions
+        function reportPost(postId) {
+            document.getElementById('reportPostId').value = postId;
+            document.getElementById('reportCommentId').value = '';
+            document.getElementById('reportReason').value = '';
+            document.getElementById('reportModal').style.display = 'flex';
+        }
+
+        function reportComment(postId, commentId) {
+            document.getElementById('reportPostId').value = postId;
+            document.getElementById('reportCommentId').value = commentId;
+            document.getElementById('reportReason').value = '';
+            document.getElementById('reportModal').style.display = 'flex';
+        }
+
+        function closeReport() {
+            document.getElementById('reportModal').style.display = 'none';
+        }
+
+        async function submitReport() {
+            const postId = document.getElementById('reportPostId').value;
+            const commentId = document.getElementById('reportCommentId').value;
+            const reason = document.getElementById('reportReason').value.trim();
+
+            if (!reason) {
+                alert('Por favor, descreva o motivo da denúncia');
+                return;
+            }
+
+            // Capturar IP do denunciante
+            let reporterIP = 'unknown';
+            try {
+                const ipResponse = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipResponse.json();
+                reporterIP = ipData.ip;
+            } catch (error) {
+                console.log('Não foi possível capturar IP do denunciante:', error);
+            }
+
+            const report = {
+                id: generateId(),
+                postId: postId,
+                commentId: commentId || null,
+                reason: reason,
+                timestamp: Date.now(),
+                reporterIP: reporterIP,
+                status: 'pending'
+            };
+
+            try {
+                await db.ref('anon-reports/' + report.id).set(report);
+                alert('Denúncia enviada com sucesso. Será analisada pela moderação.');
+                closeReport();
+            } catch (error) {
+                alert('Erro ao enviar denúncia');
+            }
         }
 
         // Check if warning was already accepted
